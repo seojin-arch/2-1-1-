@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Place Selection</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; padding: 20px; }
+        .place { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Your Study Place</h1>
+        <form id="selectionForm">
+            <div class="place">
+                <input type="checkbox" id="library" name="place" value="Library">
+                <label for="library">Library</label>
+            </div>
+            <div class="place">
+                <input type="checkbox" id="studyRoom" name="place" value="Study Room">
+                <label for="studyRoom">Study Room</label>
+            </div>
+            <div class="place">
+                <input type="checkbox" id="cafe" name="place" value="Cafe">
+                <label for="cafe">Cafe</label>
+            </div>
+            <button type="button" onclick="submitSelection()">Submit</button>
+        </form>
+        <div id="confirmation" style="display:none; margin-top:20px;">
+            <h2>Your selection has been recorded.</h2>
+        </div>
+    </div>
+    <script>
+        function submitSelection() {
+            const selectedPlaces = [];
+            document.querySelectorAll('input[name="place"]:checked').forEach((checkbox) => {
+                selectedPlaces.push(checkbox.value);
+            });
+            if (selectedPlaces.length > 0) {
+                document.getElementById('confirmation').style.display = 'block';
+                console.log('Selected places:', selectedPlaces); // This is where you'd handle data
+            } else {
+                alert('Please select at least one place.');
+            }
+        }
+    </script>
+</body>
+</html>
